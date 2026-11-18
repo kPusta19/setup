@@ -113,3 +113,21 @@ super + alt + shift + {h,j,k,l}
 ## Move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Audio (pamixer)
+
+## Volume Up
+XF86AudioRaiseVolume
+    pamixer -i 5
+
+## Volume Down
+XF86AudioLowerVolume
+    pamixer -d 5
+
+## Volume Mute
+XF86AudioMute
+    pamixer -t
+
+# Microphone Mute
+XF86AudioMicMute
+    pamixer --default-source -t
