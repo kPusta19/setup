@@ -43,6 +43,7 @@ run cp -r "${WORK_DIR}/configs/.config/." ~/.config/
 run chmod +x ~/.xinitrc \
     ~/.config/bspwm/bspwmrc \
     ~/.config/sxhkd/sxhkdrc \
-    ~/.config/polybar/launch.sh
+    ~/.config/polybar/launch.sh \
+    ~/.config/alacritty/generate-theme.sh
 
 

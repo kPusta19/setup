@@ -21,3 +21,6 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Starts polybar
 "$HOME/.config/polybar/launch.sh" &
+
+# Alacritty configure
+"$HOME/.config/alacritty/generate-theme.sh"
