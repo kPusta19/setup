@@ -39,7 +39,7 @@ run sudo cp -r "${WORK_DIR}/configs/etc/." "/etc/"
 run sudo sysctl --system
 
 run cp -r "${WORK_DIR}/configs/.xinitrc" ~/.xinitrc
-run cp -r "${WORK_DIR}/configs/.config/*" ~/.config/
+run cp -r "${WORK_DIR}/configs/.config/." ~/.config/
 run chmod +x ~/.xinitrc &&\
     ~/.config/bspwm/bspwmrc &&\
     ~/.config/sxhkd/sxhkdrc &&\
