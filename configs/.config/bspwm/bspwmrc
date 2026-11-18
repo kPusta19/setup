@@ -16,11 +16,15 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
-# Starts sxhkd 
+# Sxhkd launch 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-# Starts polybar
+# Polybar launch
 "$HOME/.config/polybar/launch.sh" &
 
 # Alacritty configure
 "$HOME/.config/alacritty/generate-theme.sh" &
+
+# Picom launch
+pkill -x picom 2>/dev/null &&\
+picom --config "$HOME/.config/picom/picom.conf" &
