@@ -35,7 +35,7 @@ run fc-cache -f
 
 # Apply configs
 echo "Apply configs..."
-run cp -r "${WORK_DIR}/configs/environment.d" "/etc/environment.d"
+run cp -r "${WORK_DIR}/configs/etc/environment.d" "/etc/environment.d"
 
 run cp -r "${WORK_DIR}/configs/.xinitrc" "~/.xinitrc"
 run cp -r "${WORK_DIR}/configs/.config" "~/.config"
