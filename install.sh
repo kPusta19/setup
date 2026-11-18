@@ -27,6 +27,7 @@ else
 
     curl -fsSL "$ARCHIVE_URL" | tar -xz -C "$TMP_DIR"
     WORK_DIR="${TMP_DIR}/${REPO_NAME}-${REPO_REF}"
+    stat ${WORK_DIR}
 fi
 
 export WORK_DIR

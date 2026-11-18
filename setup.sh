@@ -15,6 +15,7 @@ echo "Installing base packages..."
 BASE_PKGS=(
     xorg xinit # XOrg base
     libinput-tools xserver-xorg-input-libinput # XOrg controls
+    bspwm sxhkd polybar dmenu rofi picom dunst # BSPWM setup
 )
 apt_install "${BASE_PKGS[@]}"
 
