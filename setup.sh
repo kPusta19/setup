@@ -7,10 +7,11 @@ source "${WORK_DIR}/lib/gpu_drivers.sh"
 preflight
 
 # Install drivers
+echo "Installing GPU drivers..."
 gpu_install
 
 # Install base packages (XOrg, UI tools, fonts)
-info "Installing base packages..."
+echo "Installing base packages..."
 BASE_PKGS=(
     xorg xinit # XOrg base
     libinput xserver-xorg-input-libinput # XOrg controls
@@ -18,7 +19,7 @@ BASE_PKGS=(
 apt_install "${BASE_PKGS[@]}"
 
 # Apply configs
-info "Apply configs..."
+echo "Apply configs..."
 run cp -r "${WORK_DIR}/configs/.xinitrc" "~/xinitrc"
 run cp -r "${WORK_DIR}/configs/.config" "~/.config"
 
