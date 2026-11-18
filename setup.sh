@@ -36,7 +36,7 @@ run fc-cache -f
 # Apply configs
 echo "Apply configs..."
 run sudo cp -r "${WORK_DIR}/configs/etc/." "/etc/"
-run sysctl --system
+run sudo sysctl --system
 
 run cp -r "${WORK_DIR}/configs/.xinitrc" ~/.xinitrc
 run cp -r "${WORK_DIR}/configs/.config/*" ~/.config/
