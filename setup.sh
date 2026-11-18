@@ -59,6 +59,14 @@ systemctl --user enable --now pipewire-pulse.socket
 systemctl --user enable --now wireplumber.service
 
 ## ===========================================================
+# Install browser packages
+## ===========================================================
+BROWSER_PKGS=(
+    firefox
+)
+apt_install "${BROWSER_PKGS[@]}"
+
+## ===========================================================
 # Apply configs
 ## ===========================================================
 echo "Apply configs..."
