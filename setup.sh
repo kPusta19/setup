@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-WORK_DIR="${WORK_DIR:-$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)}"
-export WORK_DIR
-
 # Import common and check instance
 source "${WORK_DIR}/lib/common.sh"
 source "${WORK_DIR}/lib/gpu_drivers.sh"
@@ -38,7 +35,7 @@ run fc-cache -f
 
 # Apply configs
 echo "Apply configs..."
-run cp -r "${WORK_DIR}/configs/etc/." "/etc/"
+run sudo cp -r "${WORK_DIR}/configs/etc/." "/etc/"
 run sysctl --system
 
 run cp -r "${WORK_DIR}/configs/.xinitrc" ~/.xinitrc
