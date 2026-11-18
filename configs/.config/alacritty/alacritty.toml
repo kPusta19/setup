@@ -1,14 +1,13 @@
 # ==========================================================
-# Alacritty - Gruvbox Material Dark Medium
+# Alacritty
 # ==========================================================
 
 [general]
 live_config_reload = true
 import = ["~/.config/alacritty/themes/current.toml"]
 
-# ----------------------------------------------------------
-# Window
-# ----------------------------------------------------------
+[env]
+TERM = "xterm-256color"
 
 [window]
 dimensions = { columns = 110, lines = 32 }
@@ -21,72 +20,40 @@ opacity = 0.90
 startup_mode = "Windowed"
 dynamic_title = true
 
-# ----------------------------------------------------------
-# Font
-# ----------------------------------------------------------
 
 [font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }
+bold_italic = { family = "JetBrains Mono", style = "Bold Italic" }
+
 size = 11.0
-builtin_box_drawing = true
-
-[font.normal]
-family = "JetBrains Mono"
-style = "Regular"
-
-[font.bold]
-family = "JetBrains Mono"
-style = "Bold"
-
-[font.italic]
-family = "JetBrains Mono"
-style = "Italic"
-
-[font.bold_italic]
-family = "JetBrains Mono"
-style = "Bold Italic"
-
-[font.offset]
-x = 0
-y = 0
-
-[font.glyph_offset]
-x = 0
-y = 0
-
-# ----------------------------------------------------------
-# Cursor
-# ----------------------------------------------------------
+offset = { x = 0, y = 2 }
 
 [cursor]
 style = { shape = "Block", blinking = "On" }
 blink_interval = 600
 unfocused_hollow = true
 
-# ----------------------------------------------------------
-# Scrolling
-# ----------------------------------------------------------
-
 [scrolling]
 history = 50000
 multiplier = 3
 
-# ----------------------------------------------------------
-# Selection
-# ----------------------------------------------------------
-
 [selection]
 save_to_clipboard = true
-
-# ----------------------------------------------------------
-# Mouse
-# ----------------------------------------------------------
 
 [mouse]
 hide_when_typing = true
 
-# ----------------------------------------------------------
-# Debug
-# ----------------------------------------------------------
+[keyboard]
+bindings = [
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "Key0", mods = "Control", action = "ResetFontSize" },
+  { key = "N", mods = "Control|Shift", action = "SpawnNewInstance" },
+]
 
 [debug]
 render_timer = false

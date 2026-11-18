@@ -29,6 +29,7 @@ FONTS_PKGS=(
     fonts-firacode
     fonts-liberation
     fonts-symbola
+    fonts-nerd-symbols
 )
 apt_install "${FONTS_PKGS}"
 run fc-cache -f
