@@ -3,12 +3,12 @@
 Independent installers for Debian 12/13:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/debian-bspwm/main/ui.sh | bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/debian-bspwm/main/audio.sh | bash
-curl -fsSL https://raw.githubusercontent.com/OWNER/debian-bspwm/main/bluetooth.sh | bash
+curl -fsSL https://raw.githubusercontent.com/OWNER/setup/main/ui.sh | bash
+curl -fsSL https://raw.githubusercontent.com/OWNER/setup/main/audio.sh | bash
+curl -fsSL https://raw.githubusercontent.com/OWNER/setup/main/bluetooth.sh | bash
 ```
 
-Replace OWNER with your GitHub account. Override defaults with `BSPWM_REPO` and `BSPWM_BRANCH`.
+Replace OWNER with your GitHub account. Override defaults with `SETUP_REPO` and `SETUP_BRANCH`.
 
 Local test:
 ```bash

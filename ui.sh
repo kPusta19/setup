@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-REPO="${BSPWM_REPO:-kPusta19/setup}"
-BRANCH="${BSPWM_BRANCH:-main}"
+REPO="${SETUP_REPO:-kPusta19/setup}"
+BRANCH="${SETUP_BRANCH:-main}"
 MODULE="ui"
 URL="https://github.com/${REPO}/archive/refs/heads/${BRANCH}.tar.gz"
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
