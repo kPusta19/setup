@@ -35,16 +35,16 @@ run fc-cache -f
 
 # Apply configs
 echo "Apply configs..."
-run cp -r "${WORK_DIR}/configs/etc/environment.d" "/etc/environment.d"
+run cp -r "${WORK_DIR}/configs/etc/environment.d" /etc/environment.d
 
-run cp -r "${WORK_DIR}/configs/.xinitrc" "~/.xinitrc"
-run cp -r "${WORK_DIR}/configs/.config" "~/.config"
+run cp -r "${WORK_DIR}/configs/.xinitrc" ~/.xinitrc
+run cp -r "${WORK_DIR}/configs/.config" ~/.config
 run chmod +x ~/.xinitrc &&\
     ~/.config/bspwm/bspwmrc &&\
     ~/.config/sxhkd/sxhkdrc &&\
     ~/.config/polybar/launch.sh
 
-run cp -r "${WORK_DIR}/configs/etc/xorg.conf.d" "/etc/X11/xorg.conf.d"
+run cp -r "${WORK_DIR}/configs/etc/xorg.conf.d" /etc/X11/xorg.conf.d
 
-run cp -r "${WORK_DIR}/configs/etc/sysctl.d" "/etc/sysctl.d"
+run cp -r "${WORK_DIR}/configs/etc/sysctl.d" /etc/sysctl.d
 run sysctl --system
