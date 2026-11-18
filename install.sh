@@ -31,5 +31,5 @@ else
 fi
 
 export WORK_DIR
-sudo bash "${WORK_DIR}/setup.sh" </dev/tty
+bash "${WORK_DIR}/setup.sh" </dev/tty
 
