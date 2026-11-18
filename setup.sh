@@ -36,8 +36,12 @@ run fc-cache -f
 echo "Apply configs..."
 run cp -r "${WORK_DIR}/configs/environment.d" "/etc/environment.d"
 
-run cp -r "${WORK_DIR}/configs/.xinitrc" "~/xinitrc"
+run cp -r "${WORK_DIR}/configs/.xinitrc" "~/.xinitrc"
 run cp -r "${WORK_DIR}/configs/.config" "~/.config"
+run chmod +x ~/.initrc &&\
+    ~/.config/bspwm/bspwmrc &&\
+    ~/.config/sxhkd/sxhkdrc &&\
+    ~/.config/polybar/launch.sh
 
 run cp -r "${WORK_DIR}/configs/etc/xorg.conf.d" "/etc/X11/xorg.conf.d"
 
