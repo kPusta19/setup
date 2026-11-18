@@ -14,16 +14,32 @@ gpu_install
 echo "Installing base packages..."
 BASE_PKGS=(
     xorg xinit # XOrg base
-    libinput xserver-xorg-input-libinput # XOrg controls
+    libinput-tools xserver-xorg-input-libinput # XOrg controls
 )
 apt_install "${BASE_PKGS[@]}"
 
+# Install fonts packages
+echo "Installing fonts packages..."
+FONTS_PKGS=(
+    fonts-noto-core fonts-noto-extra fonts-noto-ui-core fonts-noto-color-emoji fonts-noto-mono fonts-noto-cjk
+    fonts-dejavu-core
+    fonts-jetbrains-mono
+    fonts-font-awesome
+    fonts-firacode
+    fonts-liberation
+    fonts-symbola
+)
+apt_install "${FONTS_PKGS}"
+run fc-cache -f
+
 # Apply configs
 echo "Apply configs..."
+run cp -r "${WORK_DIR}/configs/environment.d" "/etc/environment.d"
+
 run cp -r "${WORK_DIR}/configs/.xinitrc" "~/xinitrc"
 run cp -r "${WORK_DIR}/configs/.config" "~/.config"
 
-run cp -r "${WORK_DIR}/configs/xorg.conf.d" "/etc/X11/xorg.conf.d"
+run cp -r "${WORK_DIR}/configs/etc/xorg.conf.d" "/etc/X11/xorg.conf.d"
 
-run cp -r "${WORK_DIR}/configs/sysctl.d" "/etc/sysctl.d"
+run cp -r "${WORK_DIR}/configs/etc/sysctl.d" "/etc/sysctl.d"
 run sysctl --system
