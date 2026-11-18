@@ -24,7 +24,7 @@ BASE_PKGS=(
     bspwm sxhkd polybar dmenu rofi picom dunst starship # BSPWM setup
 )
 apt_install "${BASE_PKGS[@]}"
-echo '\neval "$(starship init bash)"' >> ~/.bashrc
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 ## ===========================================================
 # Install fonts packages
