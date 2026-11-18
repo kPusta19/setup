@@ -33,6 +33,20 @@ FONTS_PKGS=(
 apt_install "${FONTS_PKGS[@]}"
 run fc-cache -f
 
+# Install audio packages
+AUDIO_PKGS=(
+    pipewire pipewire-audio pipewire-pulse pipewire-alsa
+    wireplumber
+    libspa-0.2-bluetooth
+    pavucontrol
+    pamixer
+    playerctl
+)
+apt_install "${AUDIO_PKGS[@]}"
+systemctl --user enable --now pipewire.socket
+systemctl --user enable --now pipewire-pulse.socket
+systemctl --user enable --now wireplumber.service
+
 # Apply configs
 echo "Apply configs..."
 run sudo cp -r "${WORK_DIR}/configs/etc/." "/etc/"
