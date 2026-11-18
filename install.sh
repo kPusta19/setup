@@ -18,7 +18,8 @@ else
     # Use temp dir and download repository archive if script started via 'curl | bash'
     for cmd in curl tar; do
         if ! command -v "$cmd" >/dev/null 2>&1; then
-            die "Required '$cmd' util"
+            echo "Missed '$cmd' util" >&2
+            exit 1
         fi
     done
 
