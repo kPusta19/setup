@@ -1,12 +1,37 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-echo "1) UI  2) Audio  3) Bluetooth  4) All"
-read -r -p "Select [1-4]: " n
-case "$n" in
-1) exec bash "$DIR/modules/ui/install.sh";;
-2) exec bash "$DIR/modules/audio/install.sh";;
-3) exec bash "$DIR/modules/bluetooth/install.sh";;
-4) bash "$DIR/modules/ui/install.sh"; bash "$DIR/modules/audio/install.sh"; exec bash "$DIR/modules/bluetooth/install.sh";;
-*) echo "Invalid selection" >&2; exit 2;;
-esac
+
+REPO_OWNER="kPusta19"
+REPO_NAME="setup"
+REPO_REF="main"
+
+# Import common and check instance
+source "${DIR}/lib/common.sh"
+preflight
+
+# Use current directory if the script started from the cloned repository
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+
+if [[ -n "$SCRIPT_DIR" && -f "${SCRIPT_DIR}/lib/common.sh" ]]; then
+    WORK_DIR="$SCRIPT_DIR"
+else
+    # Use temp dir and download repository archive if script started via 'curl | bash'
+    for cmd in curl tar; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            die "Required '$cmd' util"
+        fi
+    done
+
+    TMP_DIR="$(mktemp -d)"
+    trap 'rm -rf "$TMP_DIR"' EXIT
+
+    ARCHIVE_URL="https://github.com/${REPO_OWNER}/${REPO_NAME}/archive/refs/heads/${REPO_REF}.tar.gz"
+    echo "Downloading ${REPO_OWNER}/${REPO_NAME} (${REPO_REF})..."
+
+    curl -fsSL "$ARCHIVE_URL" | tar -xz -C "$TMP_DIR"
+    WORK_DIR="${TMP_DIR}/${REPO_NAME}-${REPO_REF}"
+fi
+
+export WORK_DIR
+bash "${WORK_DIR}/setup.sh" </dev/tty
+

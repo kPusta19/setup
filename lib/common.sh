@@ -2,8 +2,9 @@
 set -Eeuo pipefail
 SETUP_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 SETUP_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/setup"
+
 mkdir -p "$SETUP_LOG_DIR"
-if [[ -z "${BSPWM_LOG_ACTIVE:-}" ]]; then export BSPWM_LOG_ACTIVE=1; exec > >(tee -a "$SETUP_LOG_DIR/install.log") 2>&1; fi
+if [[ -z "${SETUP_LOG_ACTIVE:-}" ]]; then export SETUP_LOG_ACTIVE=1; exec > >(tee -a "$SETUP_LOG_DIR/install.log") 2>&1; fi
 DRY_RUN=0; ASSUME_YES=0; VERBOSE=0
 parse_args(){ while (($#)); do case "$1" in --dry-run) DRY_RUN=1;; --yes|-y) ASSUME_YES=1;; --verbose) VERBOSE=1;; --help|-h) return 10;; *) die "Unknown option: $1";; esac; shift; done; (( VERBOSE )) && set -x; }
 info(){ printf '\n[INFO] %s\n' "$*"; }
