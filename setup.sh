@@ -62,7 +62,7 @@ systemctl --user enable --now wireplumber.service
 # Install browser packages
 ## ===========================================================
 BROWSER_PKGS=(
-    firefox
+    firefox-esr
 )
 apt_install "${BROWSER_PKGS[@]}"
 
