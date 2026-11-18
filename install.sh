@@ -5,10 +5,6 @@ REPO_OWNER="kPusta19"
 REPO_NAME="setup"
 REPO_REF="main"
 
-# Import common and check instance
-source "${DIR}/lib/common.sh"
-preflight
-
 # Use current directory if the script started from the cloned repository
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
 
