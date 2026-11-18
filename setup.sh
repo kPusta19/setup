@@ -31,7 +31,7 @@ FONTS_PKGS=(
     fonts-symbola
     fonts-nerd-symbols
 )
-apt_install "${FONTS_PKGS}"
+apt_install "${FONTS_PKGS[@]}"
 run fc-cache -f
 
 # Apply configs
