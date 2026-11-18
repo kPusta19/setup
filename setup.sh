@@ -40,10 +40,9 @@ run sudo sysctl --system
 
 run cp -r "${WORK_DIR}/configs/.xinitrc" ~/.xinitrc
 run cp -r "${WORK_DIR}/configs/.config/." ~/.config/
-run sudo chown -R $USER:$USER ~/.config
-run chmod +x ~/.xinitrc &&\
-    ~/.config/bspwm/bspwmrc &&\
-    ~/.config/sxhkd/sxhkdrc &&\
+run chmod +x ~/.xinitrc \
+    ~/.config/bspwm/bspwmrc \
+    ~/.config/sxhkd/sxhkdrc \
     ~/.config/polybar/launch.sh
 
 
