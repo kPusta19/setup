@@ -1,0 +1,8 @@
+inherits = "gruvbox_dark_soft"
+
+"ui.background" = {}
+"ui.statusline" = {}
+"ui.statusline.inactive" = {}
+"ui.gutter" = {}
+
+"ui.cursorline.primary" = { bg = "#3c3836" }

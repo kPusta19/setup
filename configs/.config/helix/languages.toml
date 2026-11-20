@@ -1,0 +1,154 @@
+# ==========================================
+# RUST
+# ==========================================
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt", args = ["--edition", "2024"] }
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.parameterHints.enable = true
+inlayHints.typeHints.enable = true
+
+# [language.debugger]
+# name = "codelldb"
+# transport = "stdio"
+# command = "codelldb"
+
+# [[language.debugger.templates]]
+# name = "binary"
+# request = "launch"
+# completion = [ { name = "binary", completion = "filename" } ]
+# args = { program = "{0}" }
+
+[language.debugger]
+name = "lldb-dap"
+transport = "stdio"
+command = "lldb-dap-19"
+
+[[language.debugger.templates]]
+name = "binary"
+request = "launch"
+completion = [ { name = "binary", completion = "filename" } ]
+args = {
+  program = "{0}",
+  initCommands = [
+    "command script import ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/etc/lldb_lookup.py",
+    "command source -s 0 ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/etc/lldb_commands"
+  ]
+}
+
+# ==========================================
+# Go
+# ==========================================
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config]
+staticcheck = true
+gofumpt = true
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
+language-servers = ["gopls"]
+indent = { tab-width = 4, unit = "\t" }
+
+# ==========================================
+# Python
+# ==========================================
+[language-server.basedpyright]
+command = "basedpyright-langserver"
+args = ["--stdio"]
+
+[language-server.basedpyright.config]
+analysis.typeCheckingMode = "standard"
+analysis.autoImportCompletions = true
+analysis.autoSearchPaths = true
+analysis.useLibraryCodeForTypes = true
+
+[[language]]
+name = "python"
+auto-format = true
+formatter = { command = "ruff", args = ["format", "--stdin-filename", "stdin.py", "-"] }
+language-servers = ["basedpyright"]
+indent = { tab-width = 4, unit = " " }
+
+# ==========================================
+# JavaScript
+# ==========================================
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.typescript-language-server.config]
+hostInfo = "helix"
+
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayVariableTypeHints = true
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayVariableTypeHints = true
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "babel"] }
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = " " }
+
+[[language]]
+name = "jsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "babel"] }
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = " " }
+
+# ==========================================
+# TypeScript
+# ==========================================
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = " " }
+
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["typescript-language-server"]
+indent = { tab-width = 2, unit = " " }
+
+# ==========================================
+# BASH
+# ==========================================
+[[language]]
+name = "bash"
+file-types = ["sh", "bash", "zsh", "ash", "dash", "ksh", "mksh", "PKGBUILD", "ebuild"]
+auto-format = true
+formatter = { command = "shfmt", args = ["-i", "2", "-ci"] }
+language-servers = ["bash-language-server"]
+
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]

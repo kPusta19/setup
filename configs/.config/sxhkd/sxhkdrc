@@ -7,7 +7,7 @@ super + Return
 
 ## Program launcher
 super + d 
-	dmenu_run
+	rofi -show drun
 
 ## Make sxhkd reload its configuration files
 super + Escape 

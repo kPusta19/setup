@@ -19,6 +19,9 @@ bspc rule -a Screenkey manage=off
 # Sxhkd launch 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
+# Keyboard setup
+setxkbmap -layout us,ru -option grp:win_space_toggle
+
 # Polybar launch
 "$HOME/.config/polybar/launch.sh" &
 
@@ -28,3 +31,6 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # Picom launch
 pkill -x picom 2>/dev/null &&\
 picom --config "$HOME/.config/picom/picom.conf" &
+
+# Wallpapers
+feh --bg-fill "$HOME/wallpapers" &
