@@ -44,9 +44,12 @@ dev_install() {
   # apt_install "${JS_TS_PKGS[@]}"
   LATEST="$(git ls-remote --tags --refs https://github.com/nvm-sh/nvm.git 'v*' |
     awk -F/ '{print $NF}' | sort -V | tail -n1)"
-  run curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/${LATEST}/install.sh" | bash
+  curl -fsSL "https://raw.githubusercontent.com/nvm-sh/nvm/${LATEST}/install.sh" | bash
+  run export NVM_DIR="$HOME/.nvm"
+  run [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  run [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-  source ~/.bashrc
+  source "$HOME/.bashrc"
   run nvm install --lts
 
   run npm install -g typescript typescript-language-server prettier
