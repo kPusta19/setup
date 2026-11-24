@@ -36,6 +36,10 @@ super + y
 super + g
 	bspc node -s biggest.window
 
+# Rotate desktop layout by 90 degrees
+super + r
+    bspc node @/ -R 90
+
 ## ===========================================================
 # State/flags
 ## ===========================================================

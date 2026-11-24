@@ -13,17 +13,6 @@ inlayHints.closingBraceHints.minLines = 10
 inlayHints.parameterHints.enable = true
 inlayHints.typeHints.enable = true
 
-# [language.debugger]
-# name = "codelldb"
-# transport = "stdio"
-# command = "codelldb"
-
-# [[language.debugger.templates]]
-# name = "binary"
-# request = "launch"
-# completion = [ { name = "binary", completion = "filename" } ]
-# args = { program = "{0}" }
-
 [language.debugger]
 name = "lldb-dap"
 transport = "stdio"
